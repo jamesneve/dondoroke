@@ -1,4 +1,4 @@
-package dondoroke.models
+package com.jamesneve.dondoroke.models
 
 import play.twirl.api.HtmlFormat._
 import play.api.Play

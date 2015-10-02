@@ -1,4 +1,4 @@
-package dondoroke.models
+package com.jamesneve.dondoroke.models
 
 class Config(maybePerPage: Option[Int] = None,
 						 maybePadding: Option[Int] = None) {

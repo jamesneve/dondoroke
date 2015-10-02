@@ -1,9 +1,9 @@
-package dondoroke.helpers
+package com.jamesneve.dondoroke.helpers
 
 import scala.language.higherKinds
 import play.twirl.api.HtmlFormat._
 import scala.reflect.ClassTag
-import dondoroke.models._
+import com.jamesneve.dondoroke.models._
 import play.api.mvc.RequestHeader
 
 class Paginator(totalItems: Int, currentPageNumber: Int, request: RequestHeader, config: Option[Config] = None) {
