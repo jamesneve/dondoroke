@@ -1,0 +1,19 @@
+@import dondoroke.models.Page
+@(page: Page)
+<div class="pagination">
+	<ul>
+		@if(!page.firstPage) { 
+			@com.jamesneve.dondoroke.templates.html.first.render(page)
+			@com.jamesneve.dondoroke.templates.html.previous.render(page)
+		}
+		@{ if(page.backwardAbb) com.jamesneve.dondoroke.templates.html.abbreviation.render(page) }
+		@page.getPaddedPages((x: Int, y: Int) => x - y).reverse
+		@com.jamesneve.dondoroke.templates.html.current.render(page)
+		@page.getPaddedPages((x: Int, y: Int) => x + y)
+		@{ if(page.forwardAbb) com.jamesneve.dondoroke.templates.html.abbreviation.render(page) }
+		@if(!page.lastPage) {
+			@com.jamesneve.dondoroke.templates.html.next.render(page)
+			@com.jamesneve.dondoroke.templates.html.last.render(page)
+		}
+	</ul>
+</div>

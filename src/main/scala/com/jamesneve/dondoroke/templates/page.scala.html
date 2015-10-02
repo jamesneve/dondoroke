@@ -1,0 +1,3 @@
+@import dondoroke.models.Page
+@(page: Page, toPage: Int)
+<li><a href="@page.buildUrl(toPage)">@toPage</a></li>
