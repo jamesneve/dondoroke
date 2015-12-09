@@ -6,7 +6,7 @@ import scala.reflect.ClassTag
 import com.jamesneve.dondoroke.models._
 import play.api.mvc.RequestHeader
 
-class Paginator(totalItems: Int, currentPageNumber: Int, request: RequestHeader, config: Option[Config] = None) {
+class Paginator(val totalItems: Int, currentPageNumber: Int, request: RequestHeader, config: Option[Config] = None) {
 	
 	val fixedCurrentPageNumber = if(currentPageNumber <= 0) 1 else currentPageNumber
 	val currentConfig = config match {
