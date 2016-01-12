@@ -16,9 +16,16 @@ class Page(val totalItems: Int, val pageNumber: Int = 1,
 
 	def backwardAbb: Boolean = (pageNumber - config.padding > 1)
 
-	def baseUrl: String = request.uri.replaceAll("""\?page=[0-9]+""", "")
+	def buildUrl(pageLink: Int): String = {
+		val pageRegex = """(page)=[0-9]+""".r.unanchored
+		val urlOptionsRegex = """(\?|\&)([^=]+)\=([^&]+)""".r.unanchored
 
-	def buildUrl(pageLink: Int): String = s"${baseUrl}?page=${pageLink}"
+		(request.uri) match {
+			case pageRegex(_*) => pageRegex.replaceAllIn(request.uri, s"page=${pageLink}")
+			case urlOptionsRegex(_*) => s"${request.uri}&page=${pageLink}"
+			case blankUri => s"${request.uri}?page=${pageLink}" 
+		}
+	}
 
 	def getPaddedPages(transformer: (Int, Int) => Int): Seq[Appendable] =
 		for(i <- 1 to config.padding; if(transformer(pageNumber, i) >= 1 && transformer(pageNumber, i) <= totalPages)) 
