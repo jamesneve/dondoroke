@@ -4,11 +4,10 @@ import scala.language.higherKinds
 import play.twirl.api.HtmlFormat._
 import scala.reflect.ClassTag
 import com.jamesneve.dondoroke.models._
-import play.api.mvc.RequestHeader
 import java.io.Serializable
 
-@SerialVersionUID(105L)
-class Paginator(val totalItems: Int, currentPageNumber: Int, request: RequestHeader, config: Option[Config] = None)
+@SerialVersionUID(110L)
+class Paginator(val totalItems: Int, currentPageNumber: Int, uri: String, config: Option[Config] = None)
 		extends Serializable {
 	
 	val fixedCurrentPageNumber = if(currentPageNumber <= 0) 1 else currentPageNumber
@@ -16,7 +15,7 @@ class Paginator(val totalItems: Int, currentPageNumber: Int, request: RequestHea
 			case Some(a) => a
 			case None => new Config
 		}
-	val currentPage = new Page(totalItems, fixedCurrentPageNumber, currentConfig, request)
+	val currentPage = new Page(totalItems, fixedCurrentPageNumber, currentConfig, uri)
 
 	def renderPager: Appendable = GlobalConfig.paginator(currentPage)
 
