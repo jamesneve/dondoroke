@@ -7,7 +7,7 @@ import com.jamesneve.dondoroke.models._
 import play.api.mvc.RequestHeader
 import java.io.Serializable
 
-@SerialVersionUID(104L)
+@SerialVersionUID(105L)
 class Paginator(val totalItems: Int, currentPageNumber: Int, request: RequestHeader, config: Option[Config] = None)
 		extends Serializable {
 	

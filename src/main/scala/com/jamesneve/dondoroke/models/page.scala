@@ -4,7 +4,7 @@ import play.api.mvc.RequestHeader
 import play.twirl.api.HtmlFormat._
 import java.io.Serializable
 
-@SerialVersionUID(104L)
+@SerialVersionUID(105L)
 class Page(val totalItems: Int, val pageNumber: Int = 1, 
 		config: Config, request: RequestHeader) 
 		extends Serializable {
