@@ -1,12 +1,11 @@
 package com.jamesneve.dondoroke.models
 
-import play.api.mvc.RequestHeader
 import play.twirl.api.HtmlFormat._
 import java.io.Serializable
 
-@SerialVersionUID(105L)
+@SerialVersionUID(110L)
 class Page(val totalItems: Int, val pageNumber: Int = 1, 
-		config: Config, request: RequestHeader) 
+		config: Config, uri: String) 
 		extends Serializable {
 
 	def totalPages: Int = (totalItems + config.perPage - 1) / config.perPage
@@ -23,10 +22,10 @@ class Page(val totalItems: Int, val pageNumber: Int = 1,
 		val pageRegex = """(page)=[0-9]+""".r.unanchored
 		val urlOptionsRegex = """(\?|\&)([^=]+)\=([^&]+)""".r.unanchored
 
-		(request.uri) match {
-			case pageRegex(_*) => pageRegex.replaceAllIn(request.uri, s"page=${pageLink}")
-			case urlOptionsRegex(_*) => s"${request.uri}&page=${pageLink}"
-			case blankUri => s"${request.uri}?page=${pageLink}" 
+		uri match {
+			case pageRegex(_*) => pageRegex.replaceAllIn(uri, s"page=${pageLink}")
+			case urlOptionsRegex(_*) => s"${uri}&page=${pageLink}"
+			case blankUri => s"${uri}?page=${pageLink}" 
 		}
 	}
 

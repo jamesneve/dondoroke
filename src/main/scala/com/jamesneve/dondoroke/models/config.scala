@@ -2,7 +2,7 @@ package com.jamesneve.dondoroke.models
 
 import java.io.Serializable
 
-@SerialVersionUID(105L)
+@SerialVersionUID(110L)
 class Config(maybePerPage: Option[Int] = None,
 						 maybePadding: Option[Int] = None)
 		extends Serializable {

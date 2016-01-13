@@ -11,8 +11,15 @@ To add Dondoroke to your Play project, add the following to Build.sbt
 ```
 resolvers += Resolver.url("james-plugins", url("http://dl.bintray.com/jamesneve/sbt-plugins"))(Resolver.ivyStylePatterns)
 
-addSbtPlugin("com.jamesneve" % "dondoroke" % "1.0.5")
+addSbtPlugin("com.jamesneve" % "dondoroke" % "1.1.0")
 ```
+
+Upgrade Notes
+--------
+
+### From 1.0.x to 1.1.x
+
+For the sake of flexibility (and serialization) the RequestHeader has been replaced by the string uri. If you were passing a request, just replace it with request.uri
 
 Routes
 --------
@@ -30,7 +37,7 @@ Import the helpers in your controller, and then create an implicit value for the
 
 * Total number of items in the list
 * Current page number
-* The current instance of RequestHeader
+* The current uri
 * [Optional] An instance of com.jamesneve.dondoroke.models.Config
 
 For example:

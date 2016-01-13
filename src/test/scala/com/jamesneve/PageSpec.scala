@@ -8,7 +8,7 @@ import org.scalatestplus.play._
 import com.jamesneve.dondoroke.models._
 
 class PageSpec extends WordSpec with MustMatchers {
-  val page = new Page(52, 2, new Config, FakeRequest("GET", "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr"))
+  val page = new Page(52, 2, new Config, "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr")
 
   "totalPages" must {
     "return total pages" in {
@@ -22,14 +22,14 @@ class PageSpec extends WordSpec with MustMatchers {
     }
 
     "return true if this page is the first page" in {
-      val page2 = new Page(52, 1, new Config, FakeRequest("GET", "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr"))
+      val page2 = new Page(52, 1, new Config, "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr")
       page2.firstPage mustBe true
     }
   }
 
   "lastPage" must {
     "return true if the current page is the last page" in {
-      val page2 = new Page(52, 3, new Config, FakeRequest("GET", "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr"))
+      val page2 = new Page(52, 3, new Config, "http://app-liv.com/en/games/all/10008?cat=dog&page=2&test=rawr")
       page2.lastPage mustBe true
     }
 
@@ -56,12 +56,12 @@ class PageSpec extends WordSpec with MustMatchers {
     }
 
     "handle the case with no page" in {
-      val page2 = new Page(52, 2, new Config, FakeRequest("GET", "http://app-liv.com/en/games/all/10008"))
+      val page2 = new Page(52, 2, new Config, "http://app-liv.com/en/games/all/10008")
       page2.buildUrl(99) mustBe "http://app-liv.com/en/games/all/10008?page=99"
     }
 
     "handle the case with no page but other URL options" in {
-      val page2 = new Page(52, 2, new Config, FakeRequest("GET", "http://app-liv.com/en/games/all/10008?cat=dog&rawr=test"))
+      val page2 = new Page(52, 2, new Config, "http://app-liv.com/en/games/all/10008?cat=dog&rawr=test")
       page2.buildUrl(123) mustBe "http://app-liv.com/en/games/all/10008?cat=dog&rawr=test&page=123"
     }
   }
