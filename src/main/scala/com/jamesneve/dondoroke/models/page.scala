@@ -2,9 +2,12 @@ package com.jamesneve.dondoroke.models
 
 import play.api.mvc.RequestHeader
 import play.twirl.api.HtmlFormat._
+import java.io.Serializable
 
+@SerialVersionUID(104L)
 class Page(val totalItems: Int, val pageNumber: Int = 1, 
-		config: Config, request: RequestHeader) {
+		config: Config, request: RequestHeader) 
+		extends Serializable {
 
 	def totalPages: Int = (totalItems + config.perPage - 1) / config.perPage
 

@@ -1,7 +1,11 @@
 package com.jamesneve.dondoroke.models
 
+import java.io.Serializable
+
+@SerialVersionUID(104L)
 class Config(maybePerPage: Option[Int] = None,
-						 maybePadding: Option[Int] = None) {
+						 maybePadding: Option[Int] = None)
+		extends Serializable {
 	
 	val perPage: Int = getConfigValueOrDefault(maybePerPage, GlobalConfig.perPage)
 	val padding: Int = getConfigValueOrDefault(maybePadding, GlobalConfig.padding)

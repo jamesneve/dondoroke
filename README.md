@@ -11,7 +11,7 @@ To add Dondoroke to your Play project, add the following to Build.sbt
 ```
 resolvers += Resolver.url("james-plugins", url("http://dl.bintray.com/jamesneve/sbt-plugins"))(Resolver.ivyStylePatterns)
 
-addSbtPlugin("com.jamesneve" % "dondoroke" % "1.0.4")
+addSbtPlugin("com.jamesneve" % "dondoroke" % "1.0.5")
 ```
 
 Routes
