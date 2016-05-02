@@ -5,7 +5,7 @@ import java.io.Serializable
 
 @SerialVersionUID(110L)
 class Page(val totalItems: Int, val pageNumber: Int = 1, 
-		config: Config, uri: String) 
+		val config: Config, uri: String) 
 		extends Serializable {
 
 	def totalPages: Int = (totalItems + config.perPage - 1) / config.perPage
